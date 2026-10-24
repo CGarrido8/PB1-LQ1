@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- 
+    HTML Document for PB1-LQ1 RSA Encryption and Decryption Activity
+    Author: CS3B_LASTNAME_I
+    Purpose: Signup form with RSA 1024-bit and RSA 3072-bit encryption demonstrations
+-->
+<html lang="en">
+<head>
+    <!-- Meta tags for responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title -->
+    <title>PB1-LQ1 RSA Encryption and Decryption - Sign Up</title>
+    
+    <!-- External CSS stylesheet -->
+    <link rel="stylesheet" href="sursa.css">
+</head>
+<body>
+    <!-- Main container wrapping all content -->
+    <div class="container">
+        
+        <!-- Header section -->
+        <header class="header">
+            <h1>RSA Encryption and Decryption Demo</h1>
+            <p class="subtitle">PB1-LQ1 - CS3A/CS3B - Sign Up Form with RSA 1024-bit and RSA 3072-bit</p>
+        </header>
+
+        <!-- Signup Form Section -->
+        <section class="form-section">
+            <h2 class="section-title">User Registration Form</h2>
+            
+            <!-- Registration form with all required fields -->
+            <form id="signupForm" novalidate autocomplete="off">
+                <!-- First row: Full Name and Date of Birth -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        <small class="error-msg" id="error-fullName"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+                        <small class="error-msg" id="error-dateOfBirth"></small>
+                    </div>
+                </div>
+
+                <!-- Second row: Year Level and Gender -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="yearLevel">Year Level <span class="required">*</span></label>
+                        <select id="yearLevel" name="yearLevel" required>
+                            <option value="">Select Year Level</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="3rd Year">3rd Year</option>
+                            <option value="4th Year">4th Year</option>
+                            <option value="5th Year">5th Year</option>
+                        </select>
+                        <small class="error-msg" id="error-yearLevel"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gender">Gender <span class="required">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Non-Binary">Non-Binary</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                        <small class="error-msg" id="error-gender"></small>
+                    </div>
+                </div>
+
+                <!-- Third row: Username and Password -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="username">Username <span class="required">*</span></label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        <small class="error-msg" id="error-username"></small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password <span class="required">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <small class="error-msg" id="error-password"></small>
+                    </div>
+                </div>
+
+                <!-- Action buttons for encryption demonstrations -->
+                <div class="button-group">
+                    <button type="button" id="btnEncrypt1024" class="btn btn-primary">Encrypt & Decrypt with RSA 1024-bit</button>
+                    <button type="button" id="btnEncrypt3072" class="btn btn-secondary">Encrypt & Decrypt with RSA 3072-bit</button>
+                    <button type="button" id="btnClear" class="btn btn-clear">Clear All</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Results Section for RSA Demonstrations -->
+        <section class="results-section">
+            <h2 class="section-title">RSA Encryption & Decryption Results</h2>
+            
+            <!-- Message area for notifications and errors -->
+            <div id="messageArea" class="message-area"></div>
+
+            <!-- Display of original input data -->
+            <div class="result-block">
+                <h3 class="result-title">1. Original Input Data (JSON Format)</h3>
+                <pre id="originalInput" class="result-content"></pre>
+            </div>
+
+            <!-- RSA 1024-bit Demonstration -->
+            <div class="demo-block">
+                <h3 class="demo-title">Demonstration 1: RSA 1024-bit Encryption</h3>
+                
+                <div class="result-block">
+                    <h4 class="result-subtitle">Encrypted Text (Base64 Encoded)</h4>
+                    <pre id="encrypted1024" class="result-content encrypted"></pre>
+                </div>
+
+                <div class="result-block">
+                    <h4 class="result-subtitle">Decrypted Result</h4>
+                    <pre id="decrypted1024" class="result-content decrypted"></pre>
+                </div>
+                
+                <div class="match-indicator">
+                    <span id="match1024" class="match-status"></span>
+                </div>
+            </div>
+
+            <!-- RSA 3072-bit Demonstration -->
+            <div class="demo-block">
+                <h3 class="demo-title">Demonstration 2: RSA 3072-bit Encryption</h3>
+                
+                <div class="result-block">
+                    <h4 class="result-subtitle">Encrypted Text (Base64 Encoded)</h4>
+                    <pre id="encrypted3072" class="result-content encrypted"></pre>
+                </div>
+
+                <div class="result-block">
+                    <h4 class="result-subtitle">Decrypted Result</h4>
+                    <pre id="decrypted3072" class="result-content decrypted"></pre>
+                </div>
+                
+                <div class="match-indicator">
+                    <span id="match3072" class="match-status"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <footer class="footer">
+            <p><strong>Note:</strong> RSA can only encrypt short messages directly. This demo implements automatic chunking for messages exceeding the RSA key size limit to ensure compatibility.</p>
+        </footer>
+    </div>
+
+    <!-- JSEncrypt Library from CDN as specified in requirements -->
+    <script src="https://cdn.jsdelivr.net/npm/jsencrypt@latest/bin/jsencrypt.min.js"></script>
+    
+    <!-- Custom JavaScript for RSA encryption and decryption logic -->
+    <script src="sursa.js"></script>
+</body>
+</html>
